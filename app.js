@@ -32,19 +32,23 @@ var createNewTaskElement=function(taskString){
     var deleteButton=document.createElement("button");//delete button
     var deleteButtonImg=document.createElement("img");//delete button image
 
+    listItem.classList.add('list-item');
+
     label.innerText=taskString;
-    label.className='task';
+    label.className='task list-item-label';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.classList.add("list-item-checkbox")
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="task-item task";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.className="btn edit";
 
-    deleteButton.className="delete";
+    deleteButton.className="btn delete";
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.classList.add("img-delete");
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -121,6 +125,7 @@ var taskCompleted=function(){
 
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
+    console.log(this.parentNode.closest("lable"));
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
 
